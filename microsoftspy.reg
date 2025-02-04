@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy]
+"disconnectedstate"=dword:00000002
+"usercontentdisabled"=dword:00000002
+"downloadcontentdisabled"=dword:00000002
+"controllerconnectedservicesenabled"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\common\clienttelemetry]
+"sendtelemetry"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
