@@ -11,25 +11,25 @@
 - Run ```OOBE\BYPASSNRO``` in CMD to disable forced Microsoft Account login
 
 - Run ```regedit``` in CMD to set values for Hardware Bypass
-regedit:
-    HKEY_LOCAL_MACHINE
-        SYSTEM
-            Setup
-                rightclick -> new -> LabConfig     # create new dir "LabConifg"
-                    rightclick -> new -> DWORD-Value (32-Bit)      # set value to 1
-                        BypassTPMCheck
-                        BypassRAMCheck
-                        BypassSecureBootCheck
-                        BypassStorageCheck
-                        BypassCPUCheck
+    - regedit:
+        ```HKEY_LOCAL_MACHINE```
+            ```SYSTEM```
+                ```Setup```
+                    ```rightclick -> new -> LabConfig```     # create new dir "LabConifg"
+                        ```rightclick -> new -> DWORD-Value (32-Bit)```      # set value to 1
+                            ```BypassTPMCheck```
+                            ```BypassRAMCheck```
+                            ```BypassSecureBootCheck```
+                            ```BypassStorageCheck```
+                            ```BypassCPUCheck```
 
 ### Allow Windows 11 upgrade from Windows 10 installation
 - regedit:
-    HKEY_LOCAL_MACHINE
-        SYSTEM
-            Setup
-                MoSetup
-                    AllowUpgradesWithUnsupportedTPMOrCPU # set value to 1
+    ```HKEY_LOCAL_MACHINE```
+        ```SYSTEM```
+            ```Setup```
+                ```MoSetup```
+                    ```AllowUpgradesWithUnsupportedTPMOrCPU``` # set value to 1
 
 
 ### Settings
@@ -40,10 +40,12 @@ regedit:
     - create partitions
 
 ### Bloadware + Spyware
-- Run `microsoftspy.reg` to disable MS Spyware
+- Run ```microsoftspy.reg``` to disable MS Spyware
 
 - Run PowerShell as Admin:
-    ```notepad drivers\etc\hosts```
+    ```
+    notepad drivers\etc\hosts
+    ```
 - add Hosts:
 
 ```
@@ -151,7 +153,9 @@ regedit:
 ### Security Settings
 - Put Windows Defender in Sandbox Mode:
     - Run PowerShell as Admin:
-        ```setx /M MP_FORCE_USE_SANDBOX 1```
+        ```
+        setx /M MP_FORCE_USE_SANDBOX 1
+        ```
 
 ### Remove Bloadware:
 - Edge:
@@ -162,7 +166,9 @@ regedit:
         ```
 
 - Teams:
-    ```Get-AppxPackage -Name MicrosoftTeams | Remove-AppxPackage```
+    ```
+    Get-AppxPackage -Name MicrosoftTeams | Remove-AppxPackage
+    ```
 
 - Internetexplorer 11
     ```Control Panel > Programs > Programs and Features > Enable or disable Windows features:```
@@ -174,8 +180,10 @@ regedit:
 
 - Enable network:
 
-- CTT Program `https://github.com/ChrisTitusTech/winutil` (Run PowerShell as Admin:):
-    ```irm "https://christitus.com/win" | iex```
+- CTT Program ```https://github.com/ChrisTitusTech/winutil``` (Run PowerShell as Admin:):
+    ```
+    irm "https://christitus.com/win" | iex
+    ```
 
 ### Windows Activation
 
@@ -203,6 +211,8 @@ Enterprise N: DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
 
 - Or with:
 
-```irm https://get.activated.win | iex```
+```
+irm https://get.activated.win | iex
+```
 
 
