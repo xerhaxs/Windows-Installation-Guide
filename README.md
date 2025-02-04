@@ -1,13 +1,16 @@
-Windows 10 and 11 privat installation guide
+# Windows 10 and 11 privat installation guide
 
-Boot ISO without network connection
+## Boot ISO without network connection
 
 
-Windows 11 Hardware bypass:
+### Windows 11 Bypass:
 
-Shift + F10     # open CMD
-OOBE\BYPASSNRO
-regedit     # # open in CMD
+- Open CMD
+```Shift + F10```
+
+- Run ```OOBE\BYPASSNRO``` in CMD to disable forced Microsoft Account login
+
+- Run ```regedit``` in CMD to set values for Hardware Bypass
 regedit:
     HKEY_LOCAL_MACHINE
         SYSTEM
@@ -20,8 +23,8 @@ regedit:
                         BypassStorageCheck
                         BypassCPUCheck
 
-Allow Windows 11 upgrade from Windows 10 installation
-regedit:
+### Allow Windows 11 upgrade from Windows 10 installation
+- regedit:
     HKEY_LOCAL_MACHINE
         SYSTEM
             Setup
@@ -29,19 +32,21 @@ regedit:
                     AllowUpgradesWithUnsupportedTPMOrCPU # set value to 1
 
 
+### Settings
+- Select Language:  English (world)
+- Version:  Windows 11 Pro N
+- Select Custom Installation:
+    - load Virt-Treiber (if needed)
+    - create partitions
 
-Select Language:  English (world)
-Version:  Windows 11 Pro N
-Select Custom Installation:
-load Virt-Treiber (if needed)
-create partitions
+### Bloadware + Spyware
+- Run `microsoftspy.reg` to disable MS Spyware
 
-microsoftspy.reg    # run
+- Run PowerShell as Admin:
+    ```notepad drivers\etc\hosts```
+- add Hosts:
 
-Run PowerShell as Admin:
-    notepad drivers\etc\hosts
-        add Hosts:
-
+```
 127.0.0.1 a-0001.a-msedge.net
 127.0.0.1 a.ads1.msn.com
 127.0.0.1 a.ads2.msads.net
@@ -137,73 +142,46 @@ Run PowerShell as Admin:
 127.0.0.1 watson.telemetry.microsoft.com.nsatc.net
 127.0.0.1 wes.df.telemetry.microsoft.com
 127.0.0.1 www.msftncsi.com
+```
 
+### Disable services:
+- Login-Assisten for Microsoft-Accounts: disabled
+- Windows-Biometricsservice: disabled
 
-Put Windows Defender in Sandbox Mode:
-    Run PowerShell as Admin:
-        setx /M MP_FORCE_USE_SANDBOX 1
+### Security Settings
+- Put Windows Defender in Sandbox Mode:
+    - Run PowerShell as Admin:
+        ```setx /M MP_FORCE_USE_SANDBOX 1```
 
-Disable services:
-    Login-Assisten for Microsoft-Accounts: disabled
-    Windows-Biometricsservice: disabled
+### Remove Bloadware:
+- Edge:
+    - Run PowerShell as Admin:
+        ```
+        cd 'C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer'
+        ./setup.exe --uninstall --system-level --verbose-logging --force-uninstall
+        ```
 
+- Teams:
+    ```Get-AppxPackage -Name MicrosoftTeams | Remove-AppxPackage```
 
-Bloadware:
-    Edge:
-        Run PowerShell as Admin:
-            cd 'C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer'
-                ./setup.exe --uninstall --system-level --verbose-logging --force-uninstall
+- Internetexplorer 11
+    ```Control Panel > Programs > Programs and Features > Enable or disable Windows features:```
+        ```Internetexplorer 11 disable```
 
-    Teams:
-        Get-AppxPackage -Name MicrosoftTeams | Remove-AppxPackage
+- Uninstall unnecessary programs (optional)
 
-    Control Panel > Programs > Programs and Features > Enable or disable Windows features:
-        Internetexplorer 11 disable
+- Create a Snapshot (optional)
 
-    Uninstall unnecessary programs
+- Enable network:
 
-Create a Snapshot (optional)
+- CTT Program `https://github.com/ChrisTitusTech/winutil` (Run PowerShell as Admin:):
+    ```irm "https://christitus.com/win" | iex```
 
-Enable network:
+### Windows Activation
 
-Install Chocolatey PKG-Manager:
-    Install Software with choco install:
-        7-Zip
-        Librewolf
-        Librewolf WinUpdater
-        Privatezilla
-        Flameshot
-        Portmaster
-        Bleachbit
-        Okular
-        Kate
-        ImageGlass
-        VLC
-    Commands:
-        choco install wpd
-        choco install 7zip
-        choco install git.install
-        choco install wget
-        choco install librewolf
-        choco install flameshot
-        choco install keepassxc
-        choco install keepass-plugin-keepassnatmsg
-        choco install portmaster
-        choco install bleachbit
-        choco install kate
-        choco install okular
-        choco install imageglass
-        choco install vlc
-        choco install thunderbird
-        choco install onlyoffice
-        choco install discord
+- Public Windows activation keys:
 
-CTT Program (Run PowerShell as Admin:):
-    https://github.com/ChrisTitusTech/winutil
-    irm "https://christitus.com/win" | iex
-
-Public Windows activation keys:
-
+```
 Home: TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
 Home N: 3KHY7-WNT83-DGQKR-F7HPR-844BM
 Home Single Language: 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH
@@ -214,14 +192,17 @@ Education: NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
 Education N: 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ
 Enterprise: NPPR9-FWDCX-D2C8J-H872K-2YT43
 Enterprise N: DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+```
 
-Run CMD as Admin:
+- Run CMD as Admin:
+```
     slmgr /ipk yourlicensekey
         slmgr /skms kms8.msguides.com
             slmgr /ato
+```            
 
-Or with:
+- Or with:
 
-irm https://get.activated.win | iex
+```irm https://get.activated.win | iex```
 
 
