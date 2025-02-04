@@ -177,7 +177,7 @@ HKEY_LOCAL_MACHINE
     Get-AppxPackage -Name MicrosoftTeams | Remove-AppxPackage
     ```
 
-- Internetexplorer 11
+- Internetexplorer 11 <br>
     ```Control Panel > Programs > Programs and Features > Enable or disable Windows features:``` <br>
     ```Internetexplorer 11 disable```
 
