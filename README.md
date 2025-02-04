@@ -2,47 +2,52 @@
 
 ## Boot ISO without network connection
 
-
 ### Windows 11 Bypass:
 
 - Open CMD
 ```Shift + F10```
 
-- Run ```OOBE\BYPASSNRO``` in CMD to disable forced Microsoft Account login
+- Run in CMD to disable forced Microsoft Account login
+```
+OOBE\BYPASSNRO
+``` 
 
-- Run ```regedit``` in CMD to set values for Hardware Bypass
+- Run in CMD to set values for Hardware Bypass
+```
+regedit
+```
     - regedit:
-        ```HKEY_LOCAL_MACHINE```
-            ```SYSTEM```
-                ```Setup```
-                    ```rightclick -> new -> LabConfig```     # create new dir "LabConifg"
-                        ```rightclick -> new -> DWORD-Value (32-Bit)```      # set value to 1
-                            ```BypassTPMCheck```
-                            ```BypassRAMCheck```
-                            ```BypassSecureBootCheck```
-                            ```BypassStorageCheck```
-                            ```BypassCPUCheck```
+        ```HKEY_LOCAL_MACHINE``` <br>
+            ```SYSTEM``` <br>
+                ```Setup``` <br>
+                    ```rightclick -> new -> LabConfig```     # create new dir "LabConifg" <br>
+                        ```rightclick -> new -> DWORD-Value (32-Bit)```      # set value to 1 <br>
+                            ```BypassTPMCheck``` <br>
+                            ```BypassRAMCheck``` <br>
+                            ```BypassSecureBootCheck``` <br>
+                            ```BypassStorageCheck``` <br>
+                            ```BypassCPUCheck``` <br>
 
 ### Allow Windows 11 upgrade from Windows 10 installation
 - regedit:
-    ```HKEY_LOCAL_MACHINE```
-        ```SYSTEM```
-            ```Setup```
-                ```MoSetup```
-                    ```AllowUpgradesWithUnsupportedTPMOrCPU``` # set value to 1
+    ```HKEY_LOCAL_MACHINE``` <br>
+        ```SYSTEM``` <br>
+            ```Setup``` <br>
+                ```MoSetup``` <br>
+                    ```AllowUpgradesWithUnsupportedTPMOrCPU``` # set value to 1 <br>
 
 
 ### Settings
 - Select Language:  English (world)
 - Version:  Windows 11 Pro N
-- Select Custom Installation:
-    - load Virt-Treiber (if needed)
+- Select custom installation:
+    - load Virt-Driver (if needed)
     - create partitions
 
 ### Bloadware + Spyware
 - Run ```microsoftspy.reg``` to disable MS Spyware
 
-- Run PowerShell as Admin:
+- Run in PowerShell as Admin:
     ```
     notepad drivers\etc\hosts
     ```
@@ -152,14 +157,14 @@
 
 ### Security Settings
 - Put Windows Defender in Sandbox Mode:
-    - Run PowerShell as Admin:
+    - Run in PowerShell as Admin:
         ```
         setx /M MP_FORCE_USE_SANDBOX 1
         ```
 
 ### Remove Bloadware:
 - Edge:
-    - Run PowerShell as Admin:
+    - Run in PowerShell as Admin:
         ```
         cd 'C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer'
         ./setup.exe --uninstall --system-level --verbose-logging --force-uninstall
@@ -180,7 +185,7 @@
 
 - Enable network:
 
-- CTT Program ```https://github.com/ChrisTitusTech/winutil``` (Run PowerShell as Admin:):
+- CTT Program ```https://github.com/ChrisTitusTech/winutil``` (Run in PowerShell as Admin:):
     ```
     irm "https://christitus.com/win" | iex
     ```
@@ -202,9 +207,9 @@ Enterprise: NPPR9-FWDCX-D2C8J-H872K-2YT43
 Enterprise N: DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
 ```
 
-- Run CMD as Admin:
+- Run in CMD as Admin:
 ```
-    slmgr /ipk yourlicensekey
+    slmgr /ipk <YOURLICENSEKEY>
         slmgr /skms kms8.msguides.com
             slmgr /ato
 ```            
