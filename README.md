@@ -12,30 +12,32 @@
 OOBE\BYPASSNRO
 ``` 
 
-- Run in CMD to set values for Hardware Bypass
+- Allow Windows 11 installation
 ```
 regedit
 ```
-    - regedit:
-        ```HKEY_LOCAL_MACHINE``` <br>
-            ```SYSTEM``` <br>
-                ```Setup``` <br>
-                    ```rightclick -> new -> LabConfig```     # create new dir "LabConifg" <br>
-                        ```rightclick -> new -> DWORD-Value (32-Bit)```      # set value to 1 <br>
-                            ```BypassTPMCheck``` <br>
-                            ```BypassRAMCheck``` <br>
-                            ```BypassSecureBootCheck``` <br>
-                            ```BypassStorageCheck``` <br>
-                            ```BypassCPUCheck``` <br>
 
-### Allow Windows 11 upgrade from Windows 10 installation
-- regedit:
-    ```HKEY_LOCAL_MACHINE``` <br>
-        ```SYSTEM``` <br>
-            ```Setup``` <br>
-                ```MoSetup``` <br>
-                    ```AllowUpgradesWithUnsupportedTPMOrCPU``` # set value to 1 <br>
+```
+HKEY_LOCAL_MACHINE
+    SYSTEM
+        Setup
+            rightclick -> new -> LabConfig     # create new dir "LabConifg"
+                rightclick -> new -> DWORD-Value (32-Bit)     # set value to 1
+                    BypassTPMCheck
+                    BypassRAMCheck
+                    BypassSecureBootCheck
+                    BypassStorageCheck
+                    BypassCPUCheck
+```
 
+- Allow Windows 11 upgrade from Windows 10 installation
+```
+HKEY_LOCAL_MACHINE
+    SYSTEM
+        Setup
+            MoSetup
+                AllowUpgradesWithUnsupportedTPMOrCPU # set value to 1
+```
 
 ### Settings
 - Select Language:  English (world)
