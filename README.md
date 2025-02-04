@@ -178,8 +178,8 @@ HKEY_LOCAL_MACHINE
     ```
 
 - Internetexplorer 11
-    ```Control Panel > Programs > Programs and Features > Enable or disable Windows features:```
-        ```Internetexplorer 11 disable```
+    ```Control Panel > Programs > Programs and Features > Enable or disable Windows features:``` <br>
+    ```Internetexplorer 11 disable```
 
 - Uninstall unnecessary programs (optional)
 
